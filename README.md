@@ -36,7 +36,7 @@ the tools we will be using.
 
 # Pre-Setup and Configuration
 
-You need to complete the steps in the DevelopmentEnvironmentSetup.md file
+You need to complete the steps in the [Dev Environment Setup](DevelopmentEnvironmentSetup.md) file
 before continuing with this practice assignment.  All assignments assume
 that you have the following configurations completed in order to work on the
 assignments.
@@ -47,8 +47,8 @@ assignments.
    to your repositories.
 3. You have installed Microsoft VSCode IDE/Editor on your system.
 4. You have installed and learned how to use the Remote Containers extension
-   in your VSCode IDE, so that you can clone your repositories, use the
-   provided build tools and extensions, and can push your work back to your
+   in your VSCode IDE.
+5. You have installed and learned how to use the Github Classroom extension to view your assignment and push your work back to your
    repositories for grading.
 
 If you have a working VSCode IDE, and have set up the Dev Containers, then
@@ -78,32 +78,9 @@ forming teams.  There are additional work that needs to be done
 to collaborate successfully using git if you form a team, so be
 aware of that.
 
-## Clone Repository using SSH to a VSCode Dev Container
+## Open your assignment from the Github Classroom extension
 
-Your new repository on GitHub will be named something like `assg00-username`
-where it appends your GitHub username or group name to the repository.
-Once you have this repository created in GitHub, you need to clone the
-repository to a VSCode Dev Container.
-
-Startup the VSCode IDE, and open up the "Remote Explorer" on the
-left hand side.  The "Remote Explorer" section will not be present
-unless you have correctly installed the Remote Containers extension
-in your VSCode IDE, as described in the more detailed environment
-detailed instructions.
-
-In the "Remote Explorer", if you hover over the CONTAINERS item, there
-will be a "+" mark allowing yout to create a new container.  Select
-the "+" to create a new container, then select "Clone Repository
-in Container Volume...".  This will allow you to clone your 
-GitHub repository into a suitable Dev Container with all 
-development tools set up that you need for the assignments.
-You should copy and paste the repository ssh url when asked here for
-the repository url, so that you can have write access to push
-back your work to your GitHub repository.
-
-TODO: determine the best procedure to clone repository into a remote
-container.
-
+Click on the Github Icon in the activity bar to the side and you will be seeing the list of assignments you have accepted in the Github Classroom section. Right click on the appropriate assignment and select open or click on the folder icon next to the assignment name. This should open the assignment folder in the VS Code and you will be prompted to reopen in a remote container. Select the prompt to reopen the assignment in the DevContainer.  
 
 ## Check that Initial Project Files Compile and Run Tests
 
@@ -115,7 +92,7 @@ perform the `Run Task` command, and select these tasks from the
 command palette.  Keyboard shortcuts should already be assigned to
 these common tasks, so you could do them as follows
 
-- `ctrl-shift-c` make clean
+- `make clean`
 ```
 > Executing task: make clean <
 
@@ -123,7 +100,7 @@ rm -rf ./test ./debug *.o *.gch
 rm -rf output html latex
 rm -rf obj
 ```
-- `ctrl-shift-b`  make build
+- `make all`
 ```
 > Executing task: make all <
 
@@ -134,9 +111,9 @@ g++ -Wall -Werror -pedantic -g  obj/test-primes.o  obj/primes.o ../assg-base-0.3
 g++ -Wall -Werror -pedantic -g -Iinclude -I../assg-base-0.3/include -c src/main.cpp -o obj/main.o
 g++ -Wall -Werror -pedantic -g  obj/main.o  obj/primes.o -o debug
 ```
-- `ctrl-shift-t` make tests
+- `make test` 
 ```
-> Executing task: make tests <
+> Executing task: make test <
 
 ././test --use-colour yes
 ===============================================================================
@@ -144,7 +121,7 @@ No tests ran
 ```
 
 The project should compile cleanly with no errors when you do the
-`make build`, and the tests should run from `make tests`, though all
+`make all`, and the tests should run from `make test`, though all
 tests are currently undefined, so there are not actual tests available
 to run yet.
 
